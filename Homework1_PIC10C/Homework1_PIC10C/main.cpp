@@ -46,8 +46,8 @@ int main(){
             cin >> bet;
         }
         
-        Card myCardPtr;
-        myHand.add_card(myCardPtr);
+        Card myCard;
+        myHand.add_card(myCard);
         
         cout << "Your hand cards: \n";
         myHand.print_card();
@@ -57,7 +57,7 @@ int main(){
         
         while (myHand.total_value() < 7.5) {
     
-            cout << "Do you want more cards? (y/n)";
+            cout << "Do you want more cards? (y/n) ";
             char more_card;
             cin >> more_card;
             if (more_card == 'y') {
