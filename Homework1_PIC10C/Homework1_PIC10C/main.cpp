@@ -74,8 +74,10 @@ int main(){
                 
             }
             else {
+                cout << "Note: Please enter only y or n\n\n";
+                cout << "Your hand cards are: \n";
                 myHand.print_card();
-                cout << "\n";
+                cout << "Total value of your cards is: " << myHand.total_value() << "\n\n";
             }
         }
         
