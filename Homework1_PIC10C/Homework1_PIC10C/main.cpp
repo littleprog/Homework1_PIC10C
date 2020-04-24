@@ -85,7 +85,7 @@ int main(){
         cout << "Dealer Hand cards: \n";
         dealerHand.print_card();
         
-        cout << "Total value of your cards is: " << dealerHand.total_value() << "\n\n";
+        cout << "Total value of the dealer's cards is: " << dealerHand.total_value() << "\n\n";
         
         if ( myHand.total_value() > 7.5) {
             dealer.update_money(bet, true);
