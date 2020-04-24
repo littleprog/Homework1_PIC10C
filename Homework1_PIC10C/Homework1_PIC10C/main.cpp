@@ -74,7 +74,8 @@ int main(){
                 
             }
             else {
-                break;
+                myHand.print_card();
+                cout << "\n";
             }
         }
         
