@@ -91,17 +91,26 @@ int main(){
             dealer.update_money(bet, true);
             me.update_money(bet, false);
         }
-        else if (dealerHand.total_value() > myHand.total_value() && dealerHand.total_value() <= 7.5) {
-            dealer.update_money(bet, true);
-            me.update_money(bet, false);
-        }
-        else if (myHand.total_value() > dealerHand.total_value() && myHand.total_value() <= 7.5) {
-            dealer.update_money(bet, false);
-            me.update_money(bet, true);
-        }
-        else if (myHand.total_value() == dealerHand.total_value() && myHand.total_value() <= 7.5) {
+        
+        else if (myHand.total_value() <= 7.5) {
+            if (dealerHand.total_value() > 7.5) {
+                dealer.update_money(bet, false);
+                me.update_money(bet, true);
+            }
+            else if (dealerHand.total_value() < myHand.total_value()) {
+                dealer.update_money(bet, false);
+                me.update_money(bet, true);
+            }
+            else if (dealerHand.total_value() == myHand.total_value()) {
+               
+            }
+            else if (dealerHand.total_value() > myHand.total_value()) {
+                dealer.update_money(bet, true);
+                me.update_money(bet, false);
+            }
             
         }
+        
         
         cout << "Your remaining amount is " << me.get_money() << "\n\n";
         
