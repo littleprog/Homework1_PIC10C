@@ -69,6 +69,10 @@ int main(){
                 
                 cout << "Total value of your cards is: " << myHand.total_value() << "\n\n";
             }
+            else if (more_card == 'n' ) {
+                break;
+                
+            }
             else {
                 break;
             }
