@@ -74,7 +74,7 @@ int main(){
                 
             }
             else {
-                break;
+                cout << "Note: Please enter only y or n\n\n";
             }
         }
         
