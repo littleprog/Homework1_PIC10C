@@ -9,6 +9,7 @@
 #include "cards.h"
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 
 /*
  You might or might not need these two extra libraries
@@ -193,10 +194,47 @@ bool Card::operator < (Card card2) const {
 
 
 
+
+
 /* *************************************************
  Hand class
  ************************************************* */
 // Implemente the member functions of the Hand class here.
+Hand::Hand() {};
+
+void Hand::add_card( Card& current) {
+    hand_cards.push_back(current);
+}
+
+void Hand::print_card() {
+    for (int i = 0; i < hand_cards.size(); ++i) {
+        string spanish_card_name = hand_cards[i].get_spanish_rank() + " de " + hand_cards[i].get_spanish_suit();
+        cout << setw(17) << spanish_card_name;
+        string english_card_name = "(" + hand_cards[i].get_english_rank() + " of " + hand_cards[i].get_english_suit() + ")";
+        cout << setw(20) <<  english_card_name <<'\n';
+    }
+}
+
+
+double Hand::total_value() const{
+    double total = 0;
+    for (int i = 0; i < hand_cards.size(); ++i) {
+        if (hand_cards[i].get_rank() >= 10) {
+            total += 0.5;
+        }
+        else {
+            total += hand_cards[i].get_rank();
+        }
+    }
+    return total;
+}
+
+
+
+
+
+
+
 
 
 
@@ -204,4 +242,21 @@ bool Card::operator < (Card card2) const {
  Player class
  ************************************************* */
 // Implemente the member functions of the Player class here.
+Player::Player(int m): money(m) {}
+
+int Player::get_money() const {
+    return money;
+}
+
+void Player::update_money(int bet, bool won) {
+    if (won) {
+        money += bet;
+    }
+    else {
+       money -= bet;
+    }
+    
+    return;
+}
+    
 

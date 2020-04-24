@@ -10,6 +10,7 @@
 #include <vector>
 #include <fstream>
 
+
 #ifndef CARDS_H
 #define CARDS_H
 
@@ -27,6 +28,8 @@ enum suit_t {OROS, COPAS, ESPADAS, BASTOS};
  The rank of SOTA is reported as  static_cast<int>(SOTA) + 1 = 9 + 1 = 10
  */
 enum rank_t {AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, SOTA=9, CABALLO=10, REY=11};
+
+class Hand;
 
 class Card {
 public:
@@ -54,6 +57,7 @@ public:
     // Useful if you want to sort the cards.
     bool operator < (Card card2) const;
     
+    
 private:
     suit_t suit;
     rank_t rank;
@@ -66,9 +70,20 @@ public:
     Hand();
     
     // You decide what functions you'll need...
+    void add_card( Card& current_card );
+    
+    void print_card();
+    
+    void delete_cards();
+    
+    int rankname_to_rankvalue(Card& current) const;
+    
+    double total_value() const;
+    
     
 private:
     // You decide what fields you'll need...
+    vector<Card> hand_cards;
 };
 
 
@@ -79,6 +94,14 @@ public:
     Player(int m);
     
     // You decide what functions you'll need...
+    int get_money() const; 
+    
+    void update_money(int bet, bool won);
+        
+    
+    
+    
+    
     
 private:
     int money;
