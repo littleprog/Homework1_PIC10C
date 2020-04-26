@@ -6,10 +6,11 @@
 //  Copyright © 2020 Seng chow Choy. All rights reserved.
 //
 
-#include "cards.h"
 #include <cstdlib>
 #include <iostream>
 #include <iomanip>
+#include <string>
+#include "cards.h"
 
 /*
  You might or might not need these two extra libraries
@@ -215,6 +216,14 @@ void Hand::print_card() {
     }
 }
 
+void Hand::fprint_card(ofstream& fout) {
+    for (int i = 0; i < hand_cards.size(); ++i) {
+        string spanish_card_name = hand_cards[i].get_spanish_rank() + " de " + hand_cards[i].get_spanish_suit();
+        fout << string(8, ' ') << left << setw(22) << spanish_card_name;
+        string english_card_name = "(" + hand_cards[i].get_english_rank() + " of " + hand_cards[i].get_english_suit() + ")";
+        fout << setw(20) <<  english_card_name <<'\n';
+    }
+}
 
 double Hand::total_value() const{
     double total = 0;

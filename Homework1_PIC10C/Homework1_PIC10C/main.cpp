@@ -12,6 +12,7 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 #include "cards.h"
 
 using namespace std;
@@ -20,7 +21,6 @@ using namespace std;
 
 
 // Non member functions declarations (if any)
-
 
 // Non member functions implementations (if any)
 
@@ -84,6 +84,7 @@ int main(){
         
         Card dealerCard;
         dealerHand.add_card(dealerCard);
+        ofstream fout("game_log",  std::ios_base::app);
         while (dealerHand.total_value() < 5.5) {
             Card nextDealerCard;
             dealerHand.add_card(nextDealerCard);
@@ -94,6 +95,7 @@ int main(){
         
         cout << "Total value of the dealer's cards is: " << dealerHand.total_value() << "\n\n";
         
+        int my_initial_money = me.get_money();
         if ( myHand.total_value() > 7.5) {
             dealer.update_money(bet, true);
             me.update_money(bet, false);
@@ -121,8 +123,26 @@ int main(){
         
         cout << "Your remaining amount is " << me.get_money() << "\n\n";
         
+        fout << string(50, '-') << "\n\n";
+        fout << "Game number: " << game_number;
+        fout << setw(20) << " Money left: " << my_initial_money << '\n';
+        fout << "Bet: " << bet << "\n\n";
+        
+        fout << "Your cards: \n";
+        myHand.fprint_card(fout);
+        fout << "Your total: " << myHand.total_value() << "\n\n";
+        
+        fout << "Dealer Hand cards: \n";
+        dealerHand.fprint_card(fout);
+        fout << "Dealer's total is " << dealerHand.total_value() << "\n\n";
+        
+        if (me.get_money() == 0) {
+            fout << string(50, '-');
+        }
         
         ++game_number;
     }
+    
+    
     return 0;
 }
