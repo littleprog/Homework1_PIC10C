@@ -74,6 +74,8 @@ public:
     
     void print_card();
     
+    void fprint_card(ofstream& fout);
+    
     void delete_cards();
     
     int rankname_to_rankvalue(Card& current) const;
