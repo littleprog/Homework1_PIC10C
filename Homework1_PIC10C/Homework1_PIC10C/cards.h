@@ -110,11 +110,6 @@ public:
     void fprint_card(ofstream& fout);
     
     /**
-     
-     */
-    int rankname_to_rankvalue(Card& current) const;
-    
-    /**
     Gives the total value of cards on the player or dealer's hand
      */
     double total_value() const;
