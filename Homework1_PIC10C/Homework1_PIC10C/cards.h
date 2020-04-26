@@ -103,14 +103,16 @@ public:
     void print_card();
     
     /**
-     Prints cards in player or dealer's hand in file
+    Prints cards in player or dealer's hand in file
      
-     @param fout the stream that is used to print cards to file
+    @param fout the stream that is used to print cards to file
      */
     void fprint_card(ofstream& fout);
     
     /**
     Gives the total value of cards on the player or dealer's hand
+     
+    @return sum of value of all cards in hand
      */
     double total_value() const;
     
