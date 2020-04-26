@@ -2,7 +2,7 @@
 
 **Version 1.0.0**
 
-Exploring how to use git by incorporating it into workflow
+Exploring how to use git by creating a spanish card game and incorporating it into workflow
 
 ---
 
