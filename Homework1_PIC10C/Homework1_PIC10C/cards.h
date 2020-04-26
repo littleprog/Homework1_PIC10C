@@ -33,19 +33,37 @@ class Hand;
 
 class Card {
 public:
-    // Constructor assigns random rank & suit to card.
+    /**
+     Class constructor: a spanish card that has a suit and rank
+     */
     Card();
     
-    // Accessors
+    /**
+     Gives the suit of the spanish card
+     
+     @return suit of spanish card as string
+     */
     string get_spanish_suit() const;
+    
+    /**
+     Gives the rank of the spanish card
+     
+    @return rank of spanish card as string
+     */
     string get_spanish_rank() const;
     
-    /*
-     These are the only functions you'll need to code
-     for this class. See the implementations of the two
-     functions above to get an idea of how to proceed.
+    /**
+     Gives the suit of the spanish card translated to the english card version
+     
+     @return the suit of the spanish card translated to the english card version as string
      */
     string get_english_suit() const;
+    
+    /**
+     Gives the rank of the spanish card translated to the english card version
+     
+     @return the rank of the spanish card translated to the english card version as string
+     */
     string get_english_rank() const;
     
     // Converts card rank to number.
@@ -66,46 +84,72 @@ private:
 
 class Hand {
 public:
-    // A vector of Cards
+    /**
+     Class constructor: an object that stores all the cards in the player or dealer's hand
+     */
     Hand();
     
-    // You decide what functions you'll need...
+    /**
+     Add a card to the player or dealer's hand
+     
+     @param current_card the card to be added to hand
+     */
     void add_card( Card& current_card );
     
+    
+    /**
+     Prints cards in player or dealer's hand on the console
+     */
     void print_card();
     
+    /**
+     Prints cards in player or dealer's hand in file
+     
+     @param fout the stream that is used to print cards to file
+     */
     void fprint_card(ofstream& fout);
     
+    /**
+     
+     */
     int rankname_to_rankvalue(Card& current) const;
     
+    /**
+    Gives the total value of cards on the player or dealer's hand
+     */
     double total_value() const;
     
     
 private:
-    // You decide what fields you'll need...
     vector<Card> hand_cards;
 };
 
 
 class Player {
 public:
-    // Constructor.
-    //    Assigns initial amount of money
+    /**
+    Class constructor: creates a player of the game
+    @param m the money that the player will start the game with
+     */
     Player(int m);
     
-    // You decide what functions you'll need...
+    /**
+     Gives the money that the player or dealer has at the moment
+     
+     @return the money that the player or dealer has at the moment
+     */
     int get_money() const; 
     
+    /**
+     Increases or decreases the money the player has depending on the amount he/she has bet and whether he/she has won
+     
+     @param bet the amount of money player wants to bet
+     @param won true if player has won, false if player lost
+     */
     void update_money(int bet, bool won);
-        
-    
-    
-    
-    
     
 private:
     int money;
-    // You decide what extra fields (if any) you'll need...
 };
 
 
