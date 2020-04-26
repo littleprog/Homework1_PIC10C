@@ -12,13 +12,6 @@
 #include <string>
 #include "cards.h"
 
-/*
- You might or might not need these two extra libraries
- #include <iomanip>
- #include <algorithm>
- */
-
-
 /* *************************************************
  Card class
  ************************************************* */
@@ -118,7 +111,6 @@ string Card::get_spanish_rank() const {
 
 
 // Accessor: returns a string with the suit of the card in English
-// This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
     string suitName;
     switch (suit) {
@@ -140,7 +132,6 @@ string Card::get_english_suit() const {
 }
 
 // Accessor: returns a string with the rank of the card in English
-// This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
     string rankName;
     switch (rank) {
@@ -195,57 +186,64 @@ bool Card::operator < (Card card2) const {
 
 
 
-
-
 /* *************************************************
  Hand class
  ************************************************* */
-// Implemente the member functions of the Hand class here.
+
 Hand::Hand() {};
 
 void Hand::add_card( Card& current) {
+    //Adds card to the data member hand_cards
     hand_cards.push_back(current);
 }
 
 void Hand::print_card() {
+    //for each cards in hand
     for (int i = 0; i < hand_cards.size(); ++i) {
+        //Create a string that is the name of the card based on its suit and rank
         string spanish_card_name = hand_cards[i].get_spanish_rank() + " de " + hand_cards[i].get_spanish_suit();
+        //Prints the name of the card to the console
         cout << setw(17) << spanish_card_name;
+        //Create a string that is the name of the card based on its suit and rank translated to english
         string english_card_name = "(" + hand_cards[i].get_english_rank() + " of " + hand_cards[i].get_english_suit() + ")";
+        //Prints the english name of the card to the console
         cout << setw(20) <<  english_card_name <<'\n';
     }
 }
 
 void Hand::fprint_card(ofstream& fout) {
+    //for each cards in hand
     for (int i = 0; i < hand_cards.size(); ++i) {
+        //Create a string that is the name of the card based on its suit and rank
         string spanish_card_name = hand_cards[i].get_spanish_rank() + " de " + hand_cards[i].get_spanish_suit();
+        //Prints the name of the card to the file
         fout << string(8, ' ') << left << setw(22) << spanish_card_name;
+        //Create a string that is the name of the card based on its suit and rank translated to english
         string english_card_name = "(" + hand_cards[i].get_english_rank() + " of " + hand_cards[i].get_english_suit() + ")";
+        //Prints the english name of the card to the file
         fout << setw(20) <<  english_card_name <<'\n';
     }
 }
 
 double Hand::total_value() const{
+    //Declare and initialize total value of cards in hand
     double total = 0;
+    //for each card in hand
     for (int i = 0; i < hand_cards.size(); ++i) {
+        //if the card has a rank greater than 10
         if (hand_cards[i].get_rank() >= 10) {
+            //Its value is 0.5 so we add 0.5
             total += 0.5;
         }
+        //otherwise
         else {
+            //the rank will be equal to value of card so we add the value of the rank
             total += hand_cards[i].get_rank();
         }
     }
+    //return sum of all values of cards in hand
     return total;
 }
-
-
-
-
-
-
-
-
-
 
 /* *************************************************
  Player class
@@ -254,14 +252,19 @@ double Hand::total_value() const{
 Player::Player(int m): money(m) {}
 
 int Player::get_money() const {
+    //returns the money the player has at the moment
     return money;
 }
 
 void Player::update_money(int bet, bool won) {
+    //if the dealer/player has won
     if (won) {
+        //increase the dealer/player's money by the amount the player bet
         money += bet;
     }
+    //otherwise
     else {
+        //decrease the dealer/plauer's money by the amount the player bet
        money -= bet;
     }
     
